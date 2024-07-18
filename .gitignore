@@ -1,6 +1,5 @@
 secrets.js
 repositories.json
-themes
 node_modules
 public
 .hugo_build.lock
