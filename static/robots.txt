@@ -1,0 +1,14 @@
+User-agent: Googlebot-Image
+Disallow: /img/*
+
+User-agent: Googlebot
+Disallow: /img/*
+Disallow: /.well-known/*
+
+User-agent: Twitterbot
+Allow: /posts/*
+
+User-agent: *
+Allow: /posts/*
+Sitemap: https://gh.juancer.me/sitemap.xml
+

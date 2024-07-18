@@ -1,0 +1,15 @@
+# Hi! Thanks for making the internet safer!
+# This page is hosted in GitHub pages.
+# Hence, if the problem affects me,
+# it is very likely that other sites will be in risk.
+
+# If the problem is due to my own configuration,
+Contact: https://juancer.me
+Expires: 2021-08-13T15:22:47Z
+Acknowledgments: https://juancer.me/.well-known/hall-of-fame.txt
+Preferred-Languages: en, es
+Canonical: https://juancer.me/.well-known/security.txt
+
+# But, if the problem is related to the PaaS (GitHub Pages),
+take a look at:
+# https://github.com/.well-known/security.txt
