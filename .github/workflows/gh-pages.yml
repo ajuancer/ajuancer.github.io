@@ -41,9 +41,9 @@ jobs:
         run: npm install && cd themes/simple && npm install
 
       - name: Update repostiroies json file
-        run: npm run update-repositories
         env:
           GH_USERNAME: ${{ secrets.GH_USERNAME }}
+        run: npm run update-repositories
 
       - run: npm ci
 
