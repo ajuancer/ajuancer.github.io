@@ -6,3 +6,10 @@ theme = 'simple'
 
 [params]
     copyrightTemplate = '(c) Juan Cerdeño {year}'
+
+
+
+[build]
+  [build.buildStats]
+    enable = true
+
