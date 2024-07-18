@@ -1,0 +1,17 @@
+<div class="header-text">
+    <header>
+        <nav>
+            <a href="{{ .Site.Home.Permalink }}">
+                <p>Juan Cerdeño</p>
+            </a>
+            <ul id="nav-menu">
+                {{$page := .}}
+                {{ range .Site.Menus.main }}
+                <li>
+                    <a href="{{ .URL }}" class="hover:underline p-1 {{ if not ($page.IsMenuCurrent "main" .) }}hover:{{ end }}mark-link">{{ .Name | strings.ToLower }}</a>
+                </li>
+                {{ end }}
+            </ul>
+        </nav>
+    </header>
+</div>

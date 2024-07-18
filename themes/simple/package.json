@@ -1,0 +1,28 @@
+{
+  "name": "simple",
+  "version": "0.2.1",
+  "description": "simple: simple is a simple theme",
+  "main": "index.js",
+  "repository": "https://github.com/ajuancer/ajuancer.github.io",
+  "author": "Juan Cerdeño",
+  "license": "MIT",
+  "scripts": {
+    "ttf2otf": "node ttf2otf.js"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^6.0.0",
+    "@tailwindcss/typography": "^0.5.13",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.39",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^16.1.0",
+    "sfnt2woff": "^1.0.1",
+    "tailwindcss": "^3.4.5"
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "maintained node versions",
+    "not dead"
+  ]
+}

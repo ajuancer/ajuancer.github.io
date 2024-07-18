@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font definition */
+@font-face {
+  font-family: InterVariable;
+  /* font-stretch: narrower; */
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/InterVariable.woff2') format('woff2');
+}
+
+:root {
+  font-family: InterVariable, sans-serif;
+  font-feature-settings: 'liga' 1, 'calt' 1, 'ss07' 1, 'ss08' 1;
+}
+
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: InterVariable, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1, 'ss02' 1, 'ss07' 1, 'ss08' 1;
+  }
+}
+
+/* Default style */
+body {
+  @apply bg-gray-50 dark:bg-gray-900;
+  font-family: InterVariable, sans-serif;
+  font-feature-settings: 'liga' 1, 'calt' 1, 'ss07' 1, 'ss08' 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold text-black dark:text-gray-100;
+}
+h1 {
+  @apply leading-normal text-xl mt-4 pb-1;
+}
+h2 {
+  @apply text-lg pt-3;
+}
+h3 {
+  @apply text-base pt-2;
+}
+p {
+  @apply text-base leading-snug text-black dark:text-gray-300 py-1;
+}
+a {
+  @apply text-blue-700 underline hover:no-underline dark:hover:bg-blue-900 dark:text-blue-200;
+}
+/* * {
+      @apply py-2;
+  } */
+ul {
+  @apply text-black dark:text-gray-300 list-disc;
+}
+li {
+  @apply ml-10;
+}
+table {
+  @apply border-t-2 border-b-2 border-yellow-600 py-2 text-gray-500 dark:text-gray-300;
+}
+th {
+  @apply px-6 border-yellow-600 dark:border-gray-50 border-dashed;
+  border-bottom-width: 1px;
+}
+th:nth-child(even),
+td:nth-child(even) {
+  @apply bg-yellow-900 bg-opacity-20 dark:bg-opacity-20;
+}
+code {
+  @apply font-inter bg-gray-200 dark:bg-gray-800 rounded-sm text-black px-2;
+  font-feature-settings: 'ss02' 1;
+  line-height: 1.4;
+}
+pre {
+  @apply p-1 bg-gray-100 dark:bg-gray-800;
+}
+blockquote {
+  @apply border-l-4 border-yellow-600 dark:border-yellow-600 pl-4 my-1 py-1 bg-gray-100 dark:bg-gray-800;
+}
+figure {
+  @apply py-2 max-w-md border-2 rounded-md p-1 my-2;
+}
+figcaption {
+  @apply py-0 my-0 pt-1 leading-none text-base text-justify !important;
+  & h4 {
+    @apply leading-none text-base;
+  }
+  & p {
+    @apply py-0 my-0 leading-none text-base;
+  }
+}
+
+/* Header style */
+.header-text {
+  & header {
+    @apply w-full py-7;
+  }
+  & nav {
+    @apply flex flex-wrap items-center;
+  }
+  & ul {
+    @apply ml-4 md:ml-8 list-none;
+  }
+  & li {
+    @apply ml-0 mr-2;
+  }
+  & a {
+    @apply m-1 no-underline text-black dark:text-gray-100;
+  }
+  /* a inside navigation menu */
+  & li > a {
+    @apply hover:text-yellow-600 dark:hover:text-yellow-600 hover:bg-yellow-100 dark:hover:bg-opacity-25 dark:hover:bg-yellow-600;
+  }
+  /* Paragraph of logo a */
+  & a > p {
+    @apply px-0 sm:p-2 border-2 text-yellow-700 border-yellow-700 hover:text-white hover:bg-yellow-700;
+  }
+  & .mark-link {
+    @apply text-yellow-700 dark:text-yellow-700 !important;
+  }
+  & #nav-menu {
+    @apply flex items-center flex-wrap;
+  }
+}
+
+.main-text {
+  /* https://stackoverflow.com/a/41491657/11688263 */
+  /* & ul > li{
+    NOT WORKING ON DATE TAGS
+    list-style-position: inside !important;
+    text-indent: -1.5em !important;
+  } */
+  /* & ul > li::before {
+    /.* content: "◍"; *./
+    font-size: 0.9em;
+    @apply text-black dark:text-gray-300 pr-2;
+  } */
+  .footnotes {
+    @apply py-4;
+  }
+}
+
+.footer-text {
+  & > * {
+    @apply text-xs;
+  }
+  & div {
+    @apply py-5 mt-4 max-w-md;
+  }
+  & hr {
+    @apply border-black dark:border-gray-50;
+    width: 9rem;
+    border-top-width: 1px;
+  }
+  & p {
+    @apply text-sm;
+  }
+}

@@ -1,0 +1,11 @@
+name = "simple"
+license = "MIT"
+description = "simple: simple is a simple package."
+homepage = "https://github.com/ajuancer/ajuancer.github.io"
+tags = ["Hugo", "Tailwind CSS", "theme", "starter", "boilerplate"]
+features = []
+min_version = "0.69"
+
+[author]
+  name = "Juan Cerdeño"
+  homepage = "https://juancer.me/"

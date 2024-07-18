@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang='{{ .Site.LanguageCode }}'class="daark">
+    {{ partial "head.html" . }}
+    <!-- flex flex-col min-h-screen -->
+    <body class="mx-4 md:mx-12 md:max-w-3xl max-md:px-4">
+        {{- partial "dev-size-indicator.html" . -}}
+        {{- partial "header.html" . -}}
+        <!-- flex-1 mt-4 sm:mt-16 -->
+        <main>
+            {{- block "main" . }}{{- end }}
+        </main>
+        {{- partial "dev-parameters.html" . -}}
+        {{- partial "footer.html" . -}}
+    </body>
+</html>

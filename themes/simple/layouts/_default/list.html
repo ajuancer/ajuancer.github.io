@@ -1,0 +1,37 @@
+{{ define "main" }}
+<div>
+    <h1 class="font-bold text-3xl text-gray-900 dark:text-gray-100 mb-0 pb-0">{{.Title}}</h1>
+    <p class="text-gray-500 dark:text-gray-300 pb-2 text-base">{{.Description}}</p>
+  <div class="main-text">
+    {{if .Content}}{{.Content}}{{end}}
+    <ul>
+    {{ $pages := .Paginator.Pages }}
+    {{ if gt (len $pages) 0}}
+      {{ range (sort $pages "Date" "desc") }}
+        {{ if ne .Params.hide true}}
+        {{ $pageYear := (.Date.Format "2006") }}
+        <li class="flex flex-wrap items-center">
+          <div class="pr-6">
+            <time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format (.Site.Params.dateFormat | default "2006-01-02") }}</time>
+          </div>
+          <span>
+            —
+            <a href="{{ .Permalink }}">{{ if .Title }} {{ .Title }} {{ else }} Untitled {{ end }}</a>
+          </span>
+        </li>
+        {{ end }}
+      {{ end }}
+    {{ else }}
+      <p class="font-bold">There are no posts yet!</p>
+      <img src="/img/no_posts.png" alt="A draw showing a broken feather duster" class="max-h-screen">
+    {{ end}}
+    </ul>
+
+    {{ with .OutputFormats.Get "RSS" }}
+    <p>
+      <a href="{{ .RelPermalink }}" class="text-sm link">RSS feed</a>
+    </p>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
