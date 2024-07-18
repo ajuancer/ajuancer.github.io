@@ -8,6 +8,7 @@ on:
   pull_request:
   schedule:
     - cron: '0 0 */15 * *' # 15d
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -52,7 +53,7 @@ jobs:
         run: cat data/repositories.json
 
       - name: Build
-        run: NODE_ENV=production hugo --minify --cleanDestinationDir
+        run: NODE_ENV=production hugo --minify --cleanDestinationDir --debug
 
       - name: Debug Hugo Output
         run: ls -R public
