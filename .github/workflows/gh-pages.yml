@@ -1,0 +1,60 @@
+# From https://github.com/peaceiris/actions-hugo
+name: github pages
+
+on:
+  push:
+    branches:
+      - main  # Branch to deploy
+  pull_request:
+  schedule:
+    - cron: '0 0 */15 * *' # 15d
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true       # Fetch the simple theme
+          fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.119.0"
+          extended: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+          # Should also check for themes/simple/package-lock.json
+
+      - name: Install NPM dependencies
+        run: npm install && cd themes/simple && npm install
+
+      - name: Update repostiroies json file
+        run: npm run update-repositories
+        env:
+          GH_USERNAME: ${{ secrets.GH_USERNAME }}
+
+      - run: npm ci
+
+      - name: Build
+        run: NODE_ENV=production hugo --minify --cleanDestinationDir
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./public
+          tag_message: 'Deployment ${{ github.ref_name }}'

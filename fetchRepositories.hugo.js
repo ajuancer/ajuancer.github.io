@@ -3,7 +3,7 @@ const fs = require('fs');
 const { execSync } = require('child_process');
 
 const githubUsername =
-  process.env.GITHUB_USERNAME || require('./secrets').githubUsername;
+  process.env.GH_USERNAME || require('./secrets').githubUsername;
 
 async function fetchRepositories() {
   try {
