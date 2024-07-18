@@ -42,6 +42,7 @@ jobs:
 
       - name: Update repostiroies json file
         env:
+          CI: true
           GH_USERNAME: ${{ secrets.GH_USERNAME }}
         run: npm run update-repositories
 
