@@ -32,6 +32,11 @@ async function fetchRepositories() {
     );
 
     const dataPath = path.join(__dirname, 'data', 'repositories.json');
+    
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir);
+    }
+    
     fs.writeFileSync(dataPath, JSON.stringify(repositories, null, 2));
     console.log('repositories.json has been updated.');
   } catch (error) {
