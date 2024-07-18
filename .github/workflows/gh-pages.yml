@@ -48,8 +48,14 @@ jobs:
           GH_USERNAME: ${{ secrets.GH_USERNAME }}
         run: npm run update-repositories
 
+      - name: Debug Fetch Output
+        run: cat data/repositories.json
+
       - name: Build
         run: NODE_ENV=production hugo --minify --cleanDestinationDir
+
+      - name: Debug Hugo Output
+        run: ls -R public
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
