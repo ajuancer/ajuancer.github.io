@@ -11,6 +11,7 @@
   "dependencies": {
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
-    "postcss": "^8.4.39"
+    "postcss": "^8.4.39",
+    "postcss-cli": "^11.0.0"
   }
 }
