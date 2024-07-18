@@ -40,13 +40,13 @@ jobs:
       - name: Install NPM dependencies
         run: npm install && cd themes/simple && npm install
 
-      - name: Update repostiroies json file
+      - run: npm ci
+
+      - name: Update repositories json file
         env:
           CI: true
           GH_USERNAME: ${{ secrets.GH_USERNAME }}
         run: npm run update-repositories
-
-      - run: npm ci
 
       - name: Build
         run: NODE_ENV=production hugo --minify --cleanDestinationDir
