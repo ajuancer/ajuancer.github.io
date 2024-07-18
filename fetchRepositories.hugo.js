@@ -1,9 +1,17 @@
 const axios = require('axios');
 const fs = require('fs');
-const { execSync } = require('child_process');
+const path = require('path');
 
-const githubUsername =
-  process.env.GH_USERNAME || require('./secrets').githubUsername;
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
+const githubUsername = process.env.GH_USERNAME;
+
+if (!githubUsername) {
+  console.error('Error: GitHub username is not defined.');
+  process.exit(1);
+}
 
 async function fetchRepositories() {
   try {
@@ -23,10 +31,8 @@ async function fetchRepositories() {
       (a, b) => new Date(b.updated_at) - new Date(a.updated_at)
     );
 
-    fs.writeFileSync(
-      'data/repositories.json',
-      JSON.stringify(repositories, null, 2)
-    );
+    const dataPath = path.join(__dirname, 'data', 'repositories.json');
+    fs.writeFileSync(dataPath, JSON.stringify(repositories, null, 2));
     console.log('repositories.json has been updated.');
   } catch (error) {
     console.error('Error fetching repositories:', error);
