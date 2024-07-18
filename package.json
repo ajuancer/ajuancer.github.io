@@ -4,7 +4,7 @@
   "description": "Website for github repositories",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "update-repositories": "node fetchRepositories.hugo.js"
   },
   "author": "juancer",
   "license": "ISC",
