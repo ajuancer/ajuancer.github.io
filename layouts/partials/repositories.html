@@ -1,0 +1,8 @@
+{{ range .Site.Data.repositories }}
+<h2>{{ .name }}</h2>
+<p><strong>Description:</strong> {{ .description | default "No description" }}</p>
+<p><strong>Created at:</strong> {{ .created_at | dateFormat "2006-01-02" }}</p>
+<p><strong>Link:</strong> <a href="{{ .url }}">{{ .url }}</a></p>
+<p><strong>Last updated:</strong> {{ .updated_at | dateFormat "2006-01-02" }}</p>
+<hr>
+{{ end }}

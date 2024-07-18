@@ -1,0 +1,8 @@
+baseURL = 'https://gh.juancer.me/'
+languageCode = 'en-us'
+title = 'Github repositories - Juan Cerdeño'
+copyright = '(c) Juan Cerdeño 2024'
+theme = 'simple'
+
+[params]
+    copyrightTemplate = '(c) Juan Cerdeño {year}'
