@@ -31,12 +31,14 @@ async function fetchRepositories() {
       (a, b) => new Date(b.updated_at) - new Date(a.updated_at)
     );
 
-    const dataPath = path.join(__dirname, 'data', 'repositories.json');
-    
+    const dataDir = path.join(__dirname, 'data');
+
     if (!fs.existsSync(dataDir)) {
       fs.mkdirSync(dataDir);
     }
-    
+
+    const dataPath = path.join(dataDir, 'repositories.json');
+
     fs.writeFileSync(dataPath, JSON.stringify(repositories, null, 2));
     console.log('repositories.json has been updated.');
   } catch (error) {
