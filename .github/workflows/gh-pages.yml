@@ -55,9 +55,6 @@ jobs:
       - name: Check file permissions
         run: ls -la data/
 
-      - name: Check if Hugo sees repositories.json
-        run: hugo --debug --printDataDir
-
       - name: Build
         run: NODE_ENV=production hugo --minify --cleanDestinationDir --debug
 
