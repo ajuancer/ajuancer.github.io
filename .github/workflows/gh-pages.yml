@@ -4,10 +4,10 @@ name: github pages
 on:
   push:
     branches:
-      - main  # Branch to deploy
+      - main
   pull_request:
   schedule:
-    - cron: '0 0 */15 * *' # 15d
+    - cron: "0 0 */15 * *" # 15d
   workflow_dispatch:
 
 permissions:
@@ -21,8 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: true       # Fetch the simple theme
-          fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
+          submodules: true # Fetch the simple theme
+          fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -33,9 +33,9 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 'latest'
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+          node-version: "latest"
+          cache: "npm"
+          cache-dependency-path: "**/package-lock.json"
           # Should also check for themes/simple/package-lock.json
 
       - name: Install NPM dependencies
@@ -48,6 +48,7 @@ jobs:
         env:
           CI: true
           GH_USERNAME: ${{ secrets.GH_USERNAME || github.repository_owner }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run update-repositories
 
       - name: Build
@@ -60,4 +61,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./public
-          tag_message: 'Deployment ${{ github.ref_name }}'
+          tag_message: "Deployment ${{ github.ref_name }}"
