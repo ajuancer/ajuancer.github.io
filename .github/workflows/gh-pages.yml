@@ -39,27 +39,19 @@ jobs:
           # Should also check for themes/simple/package-lock.json
 
       - name: Install NPM dependencies
-        run: npm install && cd themes/simple && npm install
+        run: npm ci
 
-      - run: npm ci
+      - name: Install theme NPM dependencies
+        run: cd themes/simple && npm install
 
       - name: Update repositories json file
         env:
           CI: true
-          GH_USERNAME: ${{ secrets.GH_USERNAME }}
+          GH_USERNAME: ${{ secrets.GH_USERNAME || github.repository_owner }}
         run: npm run update-repositories
 
-      - name: Debug Fetch Output
-        run: cat data/repositories.json
-
-      - name: Check file permissions
-        run: ls -la data/
-
       - name: Build
-        run: NODE_ENV=production hugo --minify --cleanDestinationDir --debug
-
-      - name: Debug Hugo Output
-        run: ls -R public
+        run: NODE_ENV=production hugo --minify --cleanDestinationDir
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
